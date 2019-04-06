@@ -1,2 +1,2 @@
-# javascript
+# Javscript 
 Javascript tutorials/notes

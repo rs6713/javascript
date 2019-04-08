@@ -1,0 +1,117 @@
+/* box model
+box wraps around every element content
+content-box margin, border, padding, content
+
+content-box: includes just content
+border-box-includes border
+
+specificity- browser has to decide what rules to apply to same element by specificity
+if same specificity picks last one
+class name more specific than general tag
+id more specific than class
+but when mark !important
+*/
+div{
+  background-color:red;
+}
+div{
+  background-color:green;/*this called*/
+}
+div{
+  background-color:yellow !important;/*this called*/
+}
+
+/*
+positioning
+static/fixed: out of flow relative to window top.
+relative- move relative to original position without impacting flow other elements
+absolute- out of flow, relative to parent element, disrupts environment as out of flow
+
+center positioning
+
+*/
+.out{
+  width:400px;
+  height:400px;
+  background-color:yellow;
+  position:relative;
+}
+.in{
+  width:100px;
+  height:100px;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translateY(-50%) translate(-50%);
+}
+
+/*
+
+visibility:hidden element still exists
+display:none no longer in the dom
+*/
+/*
+
+shadow dom- scoped subtree inside 
+news widget is now green, welcome website blue
+
+create a shadow root and make a shadow child, creates scoped css to template
+
+h3{
+  color:blue;
+}
+
+<h3> welcome to out website</h3>
+<div id ="shadowHost">
+  <span id="child">This is not part of shadow DOM</span>
+</div>
+
+<template id="newswidget">
+  <style type="text/css">
+    h3{
+      color:green
+    }
+  </style> 
+  <h3> news widget</h3>
+</template>
+
+var shadowHost=document.getElementById("shadowHost")
+var shadowRoot=shadowHost.createShadowRoot()
+var shadowChild= document.createElement("span")
+
+shadowChild.innerHTML= document.getElementById("news-widget").innerHTML;
+shadowRoot.appendChild(shadowChild)
+*/
+
+/* build a triangle */
+div{
+  height:0px;
+  width:0px;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-top: 10px solid red;
+
+}
+
+
+/*
+pseudo elements- allow extra markup element before or after every matching element
+e.g. tooltip, when hover injected into end of element
+*/
+p::after{
+  content: "I'm inject into p"
+}
+p:hover::after{
+  content: "I'm inject into p"
+}
+/*
+data attributes to store data
+<div data-name="techsmith">Profile</div>
+on hover: techsmith Profile
+*/
+
+div:hover::before{
+  display:inline-block;
+  content: attr(data-name)
+}
+
